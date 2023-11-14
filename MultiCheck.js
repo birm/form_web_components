@@ -25,7 +25,14 @@ class MultiCheck extends HTMLElement {
     }
     
     get id(){
-        return this.attributes.getNamedItem('id').value;
+      return this.attributes.getNamedItem('id').value;
+    }
+
+    set id(value){
+      let a = document.createAttribute("id") 
+      a.value = value;
+      this.attributes.setNamedItem(a)
+      return value
     }
 
     get items() {
