@@ -8,7 +8,6 @@ class MultiCheck extends HTMLElement {
       for (let item of this.items){
         let item_id = this.id + "_" + item.replace(/ /g,"_");
         // need a unique input id
-        console.log("should have id", this.id)
         let input = document.createElement("input")
         let label = document.createElement("label")
         label.innerText = item;
@@ -23,7 +22,6 @@ class MultiCheck extends HTMLElement {
         shadowRoot.appendChild(input)
         shadowRoot.appendChild(label)
       }
-      console.log(shadowRoot)
     }
     
     get id(){
@@ -31,15 +29,11 @@ class MultiCheck extends HTMLElement {
     }
 
     get items() {
-        console.log(this.attributes)
         const items = [];
   
         for (let a of this.attributes){
-            console.log(a)
           if (a.name.includes('item')) {
             items.push(a.value);
-          } else {
-            console.log('skipped', a.name)
           }
         }
   
