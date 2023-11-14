@@ -3,4 +3,8 @@
     <script src="./MultiCheck.js"></script>
     <multi-radio id="first" item-0="one" item-1="another one" item-2="this time it's 2"></multi-radio>
     <multi-check id="second" item-0="two" item-1="another two" item-2="this time it's 3"></multi-check>
+    <script>
+        document.getElementById("first").addEventListener('change', e=>console.info("[radio]", e.target.value))
+        document.getElementById("second").addEventListener('change', e=>console.info("[checkbox]", e.target.value))
+    </script>
 </html>
