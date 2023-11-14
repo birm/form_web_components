@@ -30,15 +30,20 @@ class MultiRadio extends HTMLElement {
         return this.attributes.getNamedItem('id').value;
     }
 
+    set id(value){
+      let a = document.createAttribute("id") 
+      a.value = value;
+      this.attributes.setNamedItem(a)
+      return value
+    }
+
     get items() {
         const items = [];
-  
         for (let a of this.attributes){
           if (a.name.includes('item')) {
             items.push(a.value);
           }
         }
-  
         return items;
     }
 
