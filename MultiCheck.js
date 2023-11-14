@@ -1,5 +1,3 @@
-// MultiCheck -- interact with multiple checkboxes as if they were one
-// constructed with a list of items (attributes including "item" in their names) and renders a checkbox for each. this.value returns a list of their values.
 class MultiCheck extends HTMLElement {
     constructor() {
       super();
@@ -21,6 +19,7 @@ class MultiCheck extends HTMLElement {
         input.dataset.value = item; // probably overkill
         input.value = item;
         input.name = this.id;
+        input.onchange = this.changeHandler.bind(this)
         shadowRoot.appendChild(input)
         shadowRoot.appendChild(label)
       }
@@ -51,6 +50,12 @@ class MultiCheck extends HTMLElement {
         let res = []
         this.shadowRoot.querySelectorAll('input[name=' + this.id + ']:checked').forEach(x=>{res.push(x.value)});
         return res
+    }
+
+    changeHandler(e){
+      this.dispatchEvent(
+        new Event("change")
+      )
     }
 }
   
